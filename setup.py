@@ -18,7 +18,7 @@
 from setuptools import setup
 
 setup(name="StereoVision",
-      version="1.0.3",
+      version="3.0.0",
       description=("Library and utilities for 3d reconstruction from stereo "
                    "cameras."),
       long_description=open("README.rst").read(),
@@ -31,7 +31,7 @@ setup(name="StereoVision",
                "bin/show_webcams",
                "bin/tune_blockmatcher"],
       url="http://erget.github.com/StereoVision",
-      download_url="http://pypi.python.org/pypi/StereoVision",
+      download_url="https://github.com/lk-westray/StereoVision3",
       license="GNU GPL",
       requires=["cv2",
                 "simplejson",
