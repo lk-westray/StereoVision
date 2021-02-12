@@ -109,9 +109,9 @@ def calibrate_folder(args):
     print("Calibrating cameras. This can take a while.")
     calibration = calibrator.calibrate_cameras()
     avg_error = calibrator.check_calibration(calibration)
-    print("The average error between chessboard points and their epipolar "
+    print(("The average error between chessboard points and their epipolar "
           "lines is \n"
-          "{} pixels. This should be as small as possible.".format(avg_error))
+          "{} pixels. This should be as small as possible.".format(avg_error)))
     calibration.export(args.output_folder)
 
 
@@ -143,7 +143,7 @@ class BMTuner(object):
         """
         Initialize trackbars by discovering ``block_matcher``'s parameters.
         """
-        for parameter in self.block_matcher.parameter_maxima.keys():
+        for parameter in list(self.block_matcher.parameter_maxima.keys()):
             maximum = self.block_matcher.parameter_maxima[parameter]
             if not maximum:
                 maximum = self.shortest_dimension
@@ -154,7 +154,7 @@ class BMTuner(object):
 
     def _save_bm_state(self):
         """Save current state of ``block_matcher``."""
-        for parameter in self.block_matcher.parameter_maxima.keys():
+        for parameter in list(self.block_matcher.parameter_maxima.keys()):
             self.bm_settings[parameter].append(
                                self.block_matcher.__getattribute__(parameter))
 
@@ -175,7 +175,7 @@ class BMTuner(object):
         self.shortest_dimension = min(self.pair[0].shape[:2])
         #: Settings chosen for ``BlockMatcher``
         self.bm_settings = {}
-        for parameter in self.block_matcher.parameter_maxima.keys():
+        for parameter in list(self.block_matcher.parameter_maxima.keys()):
             self.bm_settings[parameter] = []
         cv2.namedWindow(self.window_name)
         self._initialize_trackbars()
@@ -216,7 +216,7 @@ class BMTuner(object):
         value_frequency = {}
         for value in unique_values:
             value_frequency[settings_list.count(value)] = value
-        frequencies = value_frequency.keys()
+        frequencies = list(value_frequency.keys())
         frequencies.sort(reverse=True)
         header = "{} value | Selection frequency".format(parameter)
         left_column_width = len(header[:-21])
@@ -230,6 +230,6 @@ class BMTuner(object):
             right_column = str(frequency).center(right_column_width)
             report.append("{}|{}".format(left_column, right_column))
         # Remove newest settings
-        for param in self.block_matcher.parameter_maxima.keys():
+        for param in list(self.block_matcher.parameter_maxima.keys()):
             self.bm_settings[param].pop(-1)
         return "\n".join(report)

@@ -83,7 +83,7 @@ class BlockMatcher(object):
         """Load settings from file"""
         with open(settings) as settings_file:
             settings_dict = simplejson.load(settings_file)
-        for key, value in settings_dict.items():
+        for key, value in list(settings_dict.items()):
             self.__setattr__(key, value)
 
     def save_settings(self, settings_file):

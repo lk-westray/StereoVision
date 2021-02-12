@@ -45,14 +45,14 @@ class StereoCalibration(object):
 
     def __str__(self):
         output = ""
-        for key, item in self.__dict__.items():
+        for key, item in list(self.__dict__.items()):
             output += key + ":\n"
             output += str(item) + "\n"
         return output
 
     def _copy_calibration(self, calibration):
         """Copy another ``StereoCalibration`` object's values."""
-        for key, item in calibration.__dict__.items():
+        for key, item in list(calibration.__dict__.items()):
             self.__dict__[key] = item
 
     def _interact_with_folder(self, output_folder, action):
@@ -64,7 +64,7 @@ class StereoCalibration(object):
         """
         if not action in ('r', 'w'):
             raise ValueError("action must be either 'r' or 'w'.")
-        for key, item in self.__dict__.items():
+        for key, item in list(self.__dict__.items()):
             if isinstance(item, dict):
                 for side in ("left", "right"):
                     filename = os.path.join(output_folder,
