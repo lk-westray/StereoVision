@@ -12,7 +12,7 @@ order to better understand how they work.
 
 It's available on PyPI, so you can install it like this::
 
-    pip install StereoVision
+    pip install StereoVision3
 
 Tutorials are available on the Stackable blog:
 
