@@ -10,9 +10,9 @@ variable does or what values would make sense for it and no explanation is
 provided in the StereoVision documentation, refer to OpenCV's documentation in
 order to better understand how they work.
 
-It's available on PyPI, so you can install it like this::
+This Python3 port is not yet available on PyPI, so you can install it like this::
 
-    pip install StereoVision3
+    python3 -m pip install git+https://github.com/lk-westray/StereoVision3
 
 Tutorials are available on the Stackable blog:
 
@@ -21,6 +21,7 @@ Tutorials are available on the Stackable blog:
 - `Tuning the block matcher`_
 - `Producing point clouds`_
 
+(For the old Python2 version)
 If you find a bug or would like to request a feature, please `report it with
 the issue tracker <https://github.com/erget/StereoVision/issues>`_. If you'd
 like to contribute to StereoVision, feel free to `fork it on GitHub
